@@ -15,3 +15,5 @@ To run dig-managed-stairs.lua on your turtle you have to remove the following li
   - remove line: local turtle = require "turtle"
 - in dig-managed-stairs.lua
   - remove line: local turtle = require "turtle"
+  
+And: put utils.lua and dig-managed-stairs.lua to the same location in your turtle.
