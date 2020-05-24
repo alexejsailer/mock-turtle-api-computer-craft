@@ -4,50 +4,51 @@ local utils = require "utils"
 local deep = 80
 local realDeep = 0
 
-function createStairs(deep)
+function levelDig(deep)
   for i=1,deep do
-    if utils.isBedrockBelow() then
-      return 
-    end
     realDeep = realDeep + 1
     utils.checkCollectIfLavaInFront()
-    turtle.digDown()
+    
+    turtle.dig()
+    turtle.forward()
+    
+    turtle.turnLeft()
+    turtle.dig()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.dig()
+    turtle.turnLeft()
+    
+    turtle.digUp()
+    turtle.up()
+           
+    turtle.turnLeft()
+    turtle.dig()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.dig()
+    turtle.turnLeft()
+    
+    turtle.digUp()
+    turtle.up()
+        
+    turtle.turnLeft()
+    turtle.dig()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.dig()
+    turtle.turnLeft() 
+    
     turtle.down()
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.forward()
-    turtle.digUp()
-    turtle.back()
-    turtle.turnRight()
-    turtle.turnRight()
-    turtle.dig()
-    turtle.forward()
-    turtle.digUp()
-    turtle.back()
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.forward()
-    turtle.digUp()
-    -- here
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.forward()
-    turtle.digUp()
-    turtle.back()
-    turtle.turnRight()
-    turtle.turnRight()
-    turtle.dig()
-    turtle.forward()
-    turtle.digUp()
-    turtle.back()
-    turtle.turnLeft()
+    turtle.down()
+        
     if i % 7 == 0 then
       local x = utils.selectTorch()
       if x ~= 0 then
-        turtle.up()
         turtle.back()
+        turtle.turnLeft()
         turtle.place()
-        turtle.down()
+        turtle.turnRight()
         turtle.forward()
       end
     end
@@ -55,20 +56,15 @@ function createStairs(deep)
       utils.refuelSmart()
       ignoreClean = {"chest", "torch", "bucket", "coal", "lapis", "redstone", "diamond"}
       utils.cleanUp(ignoreClean)
-      ignoreChest = {"chest", "torch", "bucket"}
-      if utils.hasFullSlotsIgnore(ignoreChest) then
-        utils.createChestAndDrop()
-      end
     end
   end
 end
 
 -- program
 turtle.refuel()
-createStairs(deep)
+levelDig(deep)
 
 for i=1,realDeep + 1 do
-  turtle.up()
   turtle.back()
 end
 

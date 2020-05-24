@@ -55,6 +55,14 @@ function turtle.drop()
   print("drop")
 end
 
+function turtle.inspectDown()
+  print("inspectDown")
+end
+
+function turtle.inspect()
+  print("inspect")
+end
+
 function turtle.select(slotNum)
   gSlotNum = slotNum
 end
