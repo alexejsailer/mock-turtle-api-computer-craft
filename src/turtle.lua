@@ -11,6 +11,10 @@ function turtle.digUp()
   print("digUp")
 end
 
+function turtle.suck()
+  print("suck")
+end
+
 function turtle.digDown()
   print("digDown")
 end

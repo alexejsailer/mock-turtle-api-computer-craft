@@ -161,5 +161,25 @@ function utils.hasFullSlotsIgnore(ignore)
   return false;
 end
 
+function utils.refuelFromAnySlot()
+local needsFuel = turtle.getFuelLevel() + 3000 - turtle.getFuelLimit()
+  if needsFuel < 0 then
+    for i=1,16 do
+      turtle.select(i)
+      turtle.refuel()
+    end
+  end
+end
+
+function utils.isSugarCane()
+  local success, data = turtle.inspect()
+  if success then
+    if string.find(data.name, "sugar_cane") then
+      return true
+    end
+  end
+  return false
+end
+
 
 return utils
